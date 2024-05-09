@@ -19,8 +19,8 @@
         </form>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
+          <button type="button" class="btn btn-outline-light me-2" @click="onClickLoginBtn">Login</button>
+          <button type="button" class="btn btn-warning" @click="onClickSignUpBtn">Sign-up</button>
         </div>
       </div>
     </div>
@@ -29,8 +29,27 @@
 </template>
 
 <script>
+
+
+import { useRouter } from "vue-router";
+
 export default {
   name: "AppHeader",
+  setup() {
+    const router = useRouter();
+
+    function onClickLoginBtn() {
+      router.push('login');
+    }
+
+    function onClickSignUpBtn() {
+      router.push('signUp')
+    }
+
+    return {
+      onClickLoginBtn,onClickSignUpBtn
+    }
+  }
 };
 </script>
 

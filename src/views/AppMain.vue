@@ -15,8 +15,6 @@
     <AppFooter></AppFooter>
   </div>
 
-
-
 </template>
 
 <script>

@@ -1,11 +1,12 @@
 <template>
-  <router-view />
+  <div id="AppVue" class="w-100 h-100">
+    <router-view />
+  </div>
 </template>
 
-<style>
-
-html, body, #app {
-  height: 100%;
+<style scoped>
+#AppVue {
+  position:fixed;
 }
 
 #app {

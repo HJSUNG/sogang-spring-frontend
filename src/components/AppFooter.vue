@@ -22,5 +22,7 @@ export default {
 
 
 <style scoped>
-
+footer {
+  height: fit-content;
+}
 </style>

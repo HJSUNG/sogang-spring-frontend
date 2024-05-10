@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="h-100">
     <slot></slot>
   </section>
 
@@ -13,6 +13,8 @@ export default {
 
 
 <style scoped>
-
+section {
+  overflow: auto;
+}
 
 </style>

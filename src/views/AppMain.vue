@@ -2,7 +2,7 @@
   <div id="main" class="d-flex h-100">
     <AppHeader></AppHeader>
     <div id="wrap" class="wrap">
-      <div class="content p-0">
+      <div class="content p-0" style="position: relative;flex:1;">
         <main class="content_body">
           <AppSection class="h-100">
             <AppArticle>
@@ -47,10 +47,10 @@ export default {
   overflow: hidden;
 
   .content {
-    position: relative;
+    //position: relative;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    //flex: 1;
     padding: 8px;
     box-sizing: border-box;
     transition: all 0.1s;

@@ -66,15 +66,33 @@
             Remember me
           </label>
         </div>
-        <button class="btn btn-primary w-100 py-2" type="submit">로그인</button>
+        <button class="btn btn-primary w-100 py-2" type="submit" @click="test">로그인</button>
         <p class="mt-5 mb-3 text-body-secondary">© 2024 Sogang Spring</p>
 
     </main>
   </body>
 </template>
 <script>
+import axiosHttp from "@/utils/axiosHttp";
 export default {
-  name: "Login"
+  name: "Login",
+  setup() {
+    async function test() {
+      await axiosHttp.get("/", {
+        params: {}
+      }).then((res) => {
+        console.log(res.data)
+      }).catch((error) => {
+        console.log(error);
+      }).finally(() => {
+      });
+    }
+
+
+    return {
+      test,
+    }
+  }
 };
 </script>
 

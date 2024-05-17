@@ -78,7 +78,7 @@ export default {
   name: "Login",
   setup() {
     async function test() {
-      await axiosHttp.get("/", {
+      await axiosHttp.get("/user/", {
         params: {}
       }).then((res) => {
         console.log(res.data)

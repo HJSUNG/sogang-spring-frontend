@@ -100,7 +100,7 @@ export default {
     }
 
     async function sendImage(image) {
-      await axiosHttp.post("/objectDetection/sendImage", JSON.stringify({ image }), {})
+      await axiosHttp.post("/api/objectDetection/sendImage", JSON.stringify({ image }), {})
         .then((res) => {
           console.log(res.data);
           state.judgeResultHistoryTBData.push(res.data.judge_result)

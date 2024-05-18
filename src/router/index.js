@@ -6,6 +6,7 @@ const routes = [
     path: "/",
     name: "AppMain",
     component: AppMain,
+    redirect: '/objectDetection',
     children: [
       {
         path: "login",
@@ -16,6 +17,11 @@ const routes = [
         path: "signUp",
         name: "signUp",
         component: () =>  import("/src/app/login/views/SignUp.vue"),
+      },
+      {
+        path: "objectDetection",
+        name: "objectDetection",
+        component: () =>  import("/src/app/object_detection/views/ObjectDetection.vue"),
       },
     ]
   },

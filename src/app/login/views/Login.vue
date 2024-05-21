@@ -16,57 +16,26 @@
       </symbol>
     </svg>
 
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="테마 변경 (light)">
-        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#sun-fill"></use></svg>
-        <span class="visually-hidden" id="bd-theme-text">테마 변경</span>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="light" aria-pressed="true">
-            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
-            라이트
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
-            다크
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false">
-            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
-            시스템
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-      </ul>
-    </div>
-
-
     <main class="form-signin w-100 m-auto">
         <img class="mb-4" src="sogang_university.png" alt="" width="72" height="57">
         <h1 class="h3 mb-3 fw-normal">Sogang Spring 로그인</h1>
 
         <div class="form-floating">
-          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <input type="text" class="form-control" id="floatingInput" placeholder="ID" v-model="USER_ID">
           <label for="floatingInput">ID</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="USER_PW">
           <label for="floatingPassword">Password</label>
         </div>
 
-        <div class="form-check text-start my-3">
-          <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Remember me
-          </label>
-        </div>
-        <button class="btn btn-primary w-100 py-2" type="submit" @click="test">로그인</button>
+<!--        <div class="form-check text-start my-3">-->
+<!--          <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">-->
+<!--          <label class="form-check-label" for="flexCheckDefault">-->
+<!--            Remember me-->
+<!--          </label>-->
+<!--        </div>-->
+        <button class="mt-2 btn btn-primary w-100 py-2" type="submit" @click="login">로그인</button>
         <p class="mt-5 mb-3 text-body-secondary">© 2024 Sogang Spring</p>
 
     </main>
@@ -74,23 +43,44 @@
 </template>
 <script>
 import axiosHttp from "@/utils/axiosHttp";
+import { reactive, toRefs } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 export default {
   name: "Login",
   setup() {
-    async function test() {
-      await axiosHttp.get("/api/user/", {
-        params: {}
+    const router = useRouter()
+    const store = useStore();
+    const state = reactive({
+      USER_ID: '',
+      USER_PW: '',
+    })
+
+    async function login() {
+      await axiosHttp.post("/api/user/login", {
+        USER_ID:state.USER_ID, USER_PW:state.USER_PW
       }).then((res) => {
+        let payload = {USER_ID: res.data.USER_ID,USER_NM: res.data.USER_NM,USER_TP: res.data.USER_TP,accessToken: res.data.accessToken}
+        store.commit('login', payload);
         console.log(res.data)
+        router.push('/')
       }).catch((error) => {
         console.log(error);
       }).finally(() => {
       });
     }
 
+    function redirectToMain() {
+      if(store.getters.userInfo.accessToken !="") {
+        router.push('/')
+      }
+    }
+
+    redirectToMain();
 
     return {
-      test,
+      ...toRefs(state),
+      login
     }
   }
 };

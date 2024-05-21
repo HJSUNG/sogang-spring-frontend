@@ -19,8 +19,9 @@
         </form>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2" @click="onClickLoginBtn">Login</button>
-          <button type="button" class="btn btn-warning" @click="onClickSignUpBtn">Sign-up</button>
+          <button type="button" class="btn btn-outline-light me-2" v-if="!isLogin" @click="onClickLoginBtn">Login</button>
+          <button type="button" class="btn btn-outline-light me-2" v-if="isLogin" @click="onClickLogoutBtn">Logout</button>
+          <button type="button" class="btn btn-warning" v-if="!isLogin" @click="onClickSignUpBtn">Sign-up</button>
         </div>
       </div>
     </div>
@@ -32,12 +33,17 @@
 
 
 import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+import { computed } from "vue";
 
 export default {
   name: "AppHeader",
   setup() {
     const router = useRouter();
+    const store = useStore();
 
+    const accessToken = computed(()=>store.getters.userInfo.accessToken);
+    const isLogin = computed(() => accessToken.value !== "");
     function routerPush(url) {
       router.push(url)
     }
@@ -46,13 +52,18 @@ export default {
       router.push('login');
     }
 
+    function onClickLogoutBtn() {
+      store.commit('logout', {});
+    }
+
     function onClickSignUpBtn() {
       router.push('signUp')
     }
 
     return {
+      accessToken,isLogin,
       routerPush,
-      onClickLoginBtn,onClickSignUpBtn,
+      onClickLoginBtn,onClickSignUpBtn,onClickLogoutBtn,
     }
   }
 };

@@ -14,9 +14,9 @@
           <li><a href="#" class="nav-link px-2 text-white">About</a></li>
         </ul>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-        </form>
+        <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          {{USER_NM == "" ? "" : USER_NM + " 님 환영합니다."}}
+        </div>
 
         <div class="text-end">
           <button type="button" class="btn btn-outline-light me-2" v-if="!isLogin" @click="onClickLoginBtn">Login</button>
@@ -42,7 +42,8 @@ export default {
     const router = useRouter();
     const store = useStore();
 
-    const accessToken = computed(()=>store.getters.userInfo.accessToken);
+    const USER_NM = computed(()=>store.getters['login/userInfo'].USER_NM);
+    const accessToken = computed(()=>store.getters['login/userInfo'].accessToken);
     const isLogin = computed(() => accessToken.value !== "");
     function routerPush(url) {
       router.push(url)
@@ -61,7 +62,7 @@ export default {
     }
 
     return {
-      accessToken,isLogin,
+      USER_NM,accessToken,isLogin,
       routerPush,
       onClickLoginBtn,onClickSignUpBtn,onClickLogoutBtn,
     }

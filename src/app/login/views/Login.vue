@@ -57,13 +57,24 @@ export default {
     })
 
     async function login() {
-      await axiosHttp.post("/api/user/login", {
-        USER_ID:state.USER_ID, USER_PW:state.USER_PW
-      }).then((res) => {
-        let payload = {USER_ID: res.data.USER_ID,USER_NM: res.data.USER_NM,USER_TP: res.data.USER_TP,accessToken: res.data.accessToken}
-        store.commit('login', payload);
-        console.log(res.data)
-        router.push('/')
+      let param = {
+        USER_ID:state.USER_ID,
+        USER_PW:state.USER_PW
+      }
+
+      await axiosHttp.post("/api/user/login", param).then((res) => {
+        console.log(res.data);
+
+        if(res.data.stacd == 100) {
+          let payload = {
+            USER_ID: res.data.USER_ID,
+            USER_NM: res.data.USER_NM,
+            USER_TP: res.data.USER_TP,
+            accessToken: res.data.accessToken
+          }
+          store.commit('login/login', payload);
+          router.push('/')
+        }
       }).catch((error) => {
         console.log(error);
       }).finally(() => {
@@ -71,7 +82,7 @@ export default {
     }
 
     function redirectToMain() {
-      if(store.getters.userInfo.accessToken !="") {
+      if(store.getters['login/userInfo'].accessToken !="") {
         router.push('/')
       }
     }

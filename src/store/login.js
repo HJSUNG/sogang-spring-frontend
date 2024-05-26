@@ -1,5 +1,5 @@
 export default {
-  namespace:true,
+  namespaced:true,
   state: {
     accessToken: '',
     USER_ID: '',
@@ -8,7 +8,7 @@ export default {
   },
   getters: {
     userInfo(state) {
-      return {"USER_ID": state.USER_ID,"USER_NM": state.USER_NM, "USER_TP": state.USER_TP, accessToken:state.accessToken}
+      return {"USER_ID": state.USER_ID,"USER_NM": state.USER_NM, "USER_TP": state.USER_TP, "accessToken":state.accessToken}
     }
   },
   mutations: {

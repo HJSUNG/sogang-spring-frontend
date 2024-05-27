@@ -10,10 +10,39 @@
           <button class="btn btn-primary py-2" type="submit" @click="captureImage">화면 캡쳐</button>
         </div>
       </div>
-      <div style="flex:1;border: 1px blue solid">
-        <img :src="capturedImage">
+      <div style="flex:1;border: 1px grey solid;border-radius: 10px; padding: 10px">
+        <h5 style="font-weight: bolder">○ 검사번호</h5>
+        <h5 style="font-weight: bolder">○ 검사 시작시간</h5>
+        <h5 style="font-weight: bolder">○ 검사 진행현황</h5>
+
+        <table class="table table-border">
+          <colgroup>
+            <col>
+            <col>
+            <col>
+            <col>
+          </colgroup>
+
+          <thead>
+          <tr>
+            <th>Case 1</th>
+            <th>Case 2</th>
+            <th>Case 3</th>
+            <th>Case 4</th>
+
+          </tr>
+
+          <tr>
+            <td>{{judgeResultSummaryTBData.case1}}</td>
+            <td>{{judgeResultSummaryTBData.case2}}</td>
+            <td>{{judgeResultSummaryTBData.case1}}</td>
+            <td>{{judgeResultSummaryTBData.case1}}</td>
+          </tr>
+          </thead>
+        </table>
       </div>
     </div>
+
     <div style="flex:1;max-height: 387px;">
       <table class="table">
         <colgroup>
@@ -72,6 +101,11 @@ export default {
     const state = reactive({
       stream: null,
       capturedImage: null,
+
+      judgeResultSummaryTBData: {
+        case1:0,
+        case2:0,
+      },
 
       judgeResultHistoryTBData: [
         // {judge_dttm: '2024-05-18 17:04:28', case1: 0.718},

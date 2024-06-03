@@ -8,5 +8,5 @@ export default createStore({
   mutations: {},
   actions: {},
   modules: {login,},
-  plugins:[],
+  plugins:[createPersistedState()],
 });

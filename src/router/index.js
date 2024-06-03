@@ -23,6 +23,11 @@ const routes = [
         name: "objectDetection",
         component: () =>  import("/src/app/object_detection/views/ObjectDetection.vue"),
       },
+      {
+        path: "ObjectDetectionReport",
+        name: "ObjectDetectionReport",
+        component: () =>  import("/src/app/object_detection/views/ObjectDetectionReport.vue"),
+      },
     ]
   },
 ];

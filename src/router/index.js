@@ -6,8 +6,13 @@ const routes = [
     path: "/",
     name: "AppMain",
     component: AppMain,
-    redirect: '/objectDetection',
+    redirect: '/home',
     children: [
+      {
+        path: "home",
+        name: "home",
+        component: () =>  import("/src/app/login/views/Home.vue"),
+      },
       {
         path: "login",
         name: "login",

@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex h-100 p-2">
-    <div class="h-100" style="border-right: 1px gray solid">
+    <div class="h-100" style="border-right: 1px gray solid; overflow-y: auto">
       <table class="table">
         <colgroup>
           <col style="width: 100px">
@@ -10,20 +10,21 @@
         </colgroup>
 
         <thead>
-        <tr>
-          <th>검사번호</th>
-          <th>검사시작일시</th>
-          <th>검사종료일시</th>
-        </tr>
+          <tr>
+            <th>검사번호</th>
+            <th>검사시작일시</th>
+            <th>검사종료일시</th>
+          </tr>
         </thead>
 
         <tbody>
-        <tr v-for="(detectionNo, detectionNoIndex) in detectionNoList" @click="onClickDetectionNoTableRow(detectionNo.uid)">
-          <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.uid}}</td>
-          <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.START_DTTM}}</td>
-          <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.END_DTTM}}</td>
-        </tr>
+            <tr v-for="(detectionNo, detectionNoIndex) in detectionNoList" @click="onClickDetectionNoTableRow(detectionNo.uid)">
+              <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.uid}}</td>
+              <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.START_DTTM}}</td>
+              <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.END_DTTM}}</td>
+            </tr>
         </tbody>
+
       </table>
     </div>
 

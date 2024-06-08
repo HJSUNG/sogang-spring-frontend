@@ -32,6 +32,7 @@
           <col style="width: 150px">
           <col style="width: 150px">
           <col style="width: 150px">
+          <col style="width: 150px">
           <col>
         </colgroup>
 
@@ -42,6 +43,7 @@
             <th>① 일상생활</th>
             <th>② 감정</th>
             <th>③ 수면자세</th>
+            <th>④ 하품</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -55,6 +57,7 @@
             <col style="width: 150px">
             <col style="width: 150px">
             <col style="width: 150px">
+            <col style="width: 150px">
             <col>
           </colgroup>
 
@@ -65,6 +68,7 @@
               <td>{{data.blink_and_yawn}}</td>
               <td>{{data.facial_emotion}}</td>
               <td>{{data.sleeping}}</td>
+              <td>{{data.yawn}}</td>
               <td></td>
             </tr>
 
@@ -75,7 +79,9 @@
 
     </div>
 
+
   </div>
+
 </template>
 
 <script>
@@ -201,6 +207,7 @@ export default {
     function unMountWebcam() {
       if (state.stream) {
         state.stream.getTracks().forEach(track => track.stop());
+        console.log('@@@ webcam unmounted')
       }
     }
 

@@ -106,6 +106,7 @@
 <script>
 import { reactive, toRefs } from "vue";
 import axiosHttp from "@/utils/axiosHttp";
+import router from "@/router";
 
 export default {
   name: "SignUp",
@@ -178,6 +179,7 @@ export default {
 
           if(res.data.stacd == 100) {
             initializePage();
+            router.push('/login')
           }
 
         }).catch((error) => {

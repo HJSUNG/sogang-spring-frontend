@@ -7,7 +7,7 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a class="nav-link px-2 text-secondary" style="cursor: pointer" @click="routerPush('/')">Home</a></li>
+          <li><a class="nav-link px-2 text-secondary" style="cursor: pointer" @click="routerPush('/home')">Home</a></li>
           <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/ObjectDetection')">검사</a></li>
           <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/ObjectDetectionReport')">검사이력</a></li>
 <!--          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>-->

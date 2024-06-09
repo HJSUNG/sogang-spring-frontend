@@ -32,29 +32,37 @@
         <li>일상 생활 검사 - 업무할 때, 백그라운드로 켜놓고 작업합니다.</li>
       </ul>
     </div>
+
+    <Toast/>
+
   </div>
+
 
 </template>
 
 
 <script>
 import { reactive, toRefs } from "vue";
+import Toast from 'primevue/toast';
+import { useToast } from 'primevue/usetoast';
 
 export default {
   name: "Home",
   components: {
-
+    Toast,
   },
   props: {
 
   },
   setup() {
+    const toast = useToast();
     const state = reactive({
       image1Src: require('@/assets/images/blog2.jpg'),
     })
 
     function testToast(){
-
+      console.log("@@@testToast")
+      toast.add({ severity: 'success', summary: 'Success Message', detail: 'Message Content', life: 3000 });
     }
 
 

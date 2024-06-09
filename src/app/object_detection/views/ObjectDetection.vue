@@ -33,6 +33,7 @@
           <col style="width: 150px">
           <col style="width: 150px">
           <col style="width: 150px">
+          <col style="width: 150px">
           <col>
         </colgroup>
 
@@ -44,6 +45,7 @@
             <th>② 감정</th>
             <th>③ 수면자세</th>
             <th>④ 하품</th>
+            <th>⑤ 목/허리</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -54,6 +56,7 @@
           <colgroup>
             <col style="width: 100px">
             <col style="width: 200px">
+            <col style="width: 150px">
             <col style="width: 150px">
             <col style="width: 150px">
             <col style="width: 150px">
@@ -69,6 +72,7 @@
               <td>{{data.facial_emotion}}</td>
               <td>{{data.sleeping}}</td>
               <td>{{data.yawn}}</td>
+              <td>{{data.neck_and_waist}}</td>
               <td></td>
             </tr>
 

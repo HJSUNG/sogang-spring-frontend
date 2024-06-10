@@ -107,10 +107,12 @@
 import { reactive, toRefs } from "vue";
 import axiosHttp from "@/utils/axiosHttp";
 import router from "@/router";
+import { useToast } from 'primevue/usetoast';
 
 export default {
   name: "SignUp",
   setup() {
+    const toast = useToast();
     const state = reactive({
       isAgreeTerm: false,
       isIdValid: false,
@@ -156,6 +158,9 @@ export default {
 
           if(res.data.stacd == 100) {
             state.isIdValid = true;
+            toast.add({ severity: 'success', summary: '', detail: '사용 가능한 아이디입니다.', life: 3000 });
+          } else {
+            toast.add({ severity: 'error', summary: '', detail: '중복된 아이디입니다.', life: 3000 });
           }
 
         }).catch((error) => {
@@ -179,7 +184,10 @@ export default {
 
           if(res.data.stacd == 100) {
             initializePage();
+            toast.add({ severity: 'success', summary: '회원가입 성공', detail: '회원가입에 성공했습니다.', life: 3000 });
             router.push('/login')
+          } else {
+            toast.add({ severity: 'warn', summary: '회원가입 실패', detail: '입력정보를 다시 확인하세요.', life: 3000 });
           }
 
         }).catch((error) => {

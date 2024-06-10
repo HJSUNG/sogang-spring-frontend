@@ -15,6 +15,8 @@
     <AppFooter></AppFooter>
   </div>
 
+  <Toast/>
+
 </template>
 
 <script>
@@ -22,6 +24,9 @@ import AppHeader from "@/components/AppHeader.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import AppSection from "@/components/AppSection.vue";
 import AppArticle from "@/components/AppArticle.vue";
+
+import Toast from 'primevue/toast';
+import { useToast } from 'primevue/usetoast';
 
 export default {
   name: "AppMain",
@@ -31,6 +36,9 @@ export default {
     AppSection,
     AppArticle
   },
+  setup() {
+    const toast = useToast();
+  }
 };
 </script>
 

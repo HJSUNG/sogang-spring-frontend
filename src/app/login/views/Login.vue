@@ -40,15 +40,19 @@
 
     </main>
   </body>
+
 </template>
 <script>
 import axiosHttp from "@/utils/axiosHttp";
 import { reactive, toRefs } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import { useToast } from 'primevue/usetoast';
+
 export default {
   name: "Login",
   setup() {
+    const toast = useToast();
     const router = useRouter()
     const store = useStore();
     const state = reactive({
@@ -73,7 +77,10 @@ export default {
             accessToken: res.data.accessToken
           }
           store.commit('login/login', payload);
+          toast.add({ severity: 'success', summary: '로그인 성공', detail: '환영합니다 !', life: 3000 });
           router.push('/')
+        } else {
+          toast.add({ severity: 'warn', summary: '로그인 실패', detail: '계정정보를 확인하세요 !', life: 3000 });
         }
       }).catch((error) => {
         console.log(error);

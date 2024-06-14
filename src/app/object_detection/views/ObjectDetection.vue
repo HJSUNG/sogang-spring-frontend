@@ -7,7 +7,7 @@
           <canvas ref="canvas" class="w-100" style="display: none;"></canvas>
         </div>
         <div class="d-flex" style="justify-content:center">
-          <button class="btn py-2" :class="isSending ? 'btn-warning' : 'btn-primary'" type="submit" @click="toggleInterval">{{ isSending ? "검사 종료" : "검사 시작" }}</button>
+          <button class="btn py-2" :class="isSending ? 'btn-warning' : 'btn-primary'" type="submit" :disabled="isFinished" @click="toggleInterval">{{ isSending ? "검사 종료" : "검사 시작" }}</button>
         </div>
       </div>
       <div style="flex:1;border: 1px grey solid;border-radius: 10px; padding: 10px">
@@ -111,6 +111,7 @@ export default {
       ],
 
       isSending: false,
+      isFinished: false,
 
       detection_no: '',
       detection_start_dttm: '',
@@ -186,6 +187,7 @@ export default {
         await endDetection();
         clearInterval()
         state.isSending = !state.isSending;
+        state.isFinished = true;
       } else {
         await getDetectionNo();
         if(state.detection_no) {

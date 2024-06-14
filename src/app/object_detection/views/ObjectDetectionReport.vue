@@ -123,7 +123,7 @@
 </template>
 
 <script>
-import { onMounted, reactive, toRefs } from "vue";
+import { onMounted, reactive, toRefs, watch } from "vue";
 import axiosHttp from "@/utils/axiosHttp";
 
 export default {
@@ -135,6 +135,10 @@ export default {
       detectionNoList: [],
 
       selectedDetectionNo:'',
+    })
+
+    watch(()=>state.selectedDetectionNo, ()=> {
+
     })
 
     function onClickDetectionNoTableRow(detectionNo) {

@@ -4,14 +4,15 @@
       <table class="table">
         <colgroup>
           <col style="width: 100px">
+          <col style="width: 100px">
           <col style="width: 200px">
           <col style="width: 200px">
-          <col>
         </colgroup>
 
         <thead>
           <tr>
             <th>검사번호</th>
+            <th>검사유형</th>
             <th>검사시작일시</th>
             <th>검사종료일시</th>
           </tr>
@@ -20,6 +21,7 @@
         <tbody>
             <tr v-for="(detectionNo, detectionNoIndex) in detectionNoList" @click="onClickDetectionNoTableRow(detectionNo.uid)">
               <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.uid}}</td>
+              <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.TEST_TP}}</td>
               <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.START_DTTM}}</td>
               <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.END_DTTM}}</td>
             </tr>
@@ -31,6 +33,7 @@
     <div class="h-100" style="margin-left:5px; flex:1;border: 1px grey solid;border-radius: 10px; padding: 10px">
 
       <h5 style="font-weight: bolder">{{detection_no ? '○ 검사번호 : ' + detection_no : "○ 검사번호"}}</h5>
+      <h5 style="font-weight: bolder">{{detection_no ? '○ 검사유형 : ' + detection_no : "○ 검사유형"}}</h5>
       <h5 style="font-weight: bolder">{{detection_start_dttm ? '○ 검사 시작시간 : ' + detection_start_dttm : "○ 검사 시작시간"}}</h5>
       <h5 style="font-weight: bolder">{{detection_end_dttm ? '○ 검사 종료시간 : ' + detection_end_dttm : "○ 검사 종료시간"}}</h5>
 
@@ -135,6 +138,13 @@ export default {
       detectionNoList: [],
 
       selectedDetectionNo:'',
+
+      detailInfo: {
+        detectionNo: '',
+        testType: '',
+        start_dttm: '',
+        end_dttm:'',
+      },
     })
 
     watch(()=>state.selectedDetectionNo, ()=> {

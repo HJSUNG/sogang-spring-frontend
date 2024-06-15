@@ -10,7 +10,9 @@
 
         <ul class="nav me-auto mb-2 mb-lg-0">
           <li><a class="nav-link px-2 text-secondary" style="cursor: pointer" @click="routerPush('/home')">Home</a></li>
-          <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/ObjectDetection')">검사</a></li>
+          <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/objectDetection_normal')">일상검사</a></li>
+          <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/objectDetection_sleeping')">수면검사</a></li>
+          <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/objectDetection_pose')">자세검사</a></li>
           <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/ObjectDetectionReport')">검사이력</a></li>
           <!-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li> -->
           <!-- <li><a href="#" class="nav-link px-2 text-white">About</a></li> -->

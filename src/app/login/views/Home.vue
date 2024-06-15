@@ -20,16 +20,18 @@
     <div class="mt-4" style="justify-content: center">
       <h3 style="font-weight: bolder">이런 분들에게 추천합니다. </h3>
       <ul class="pl-4" style="font-style: italic; font-weight: bold">
+        <li>평소 내 컨디션이 어떤지 궁금한 사람</li>
         <li>잠에서 깼을 때, 왠지 모르게 피곤한 사람</li>
-        <li>내 평소 자세가 어떤지 궁금한 사람 </li>
+        <li>나의 평소 자세가 어떤지 궁금한 사람 </li>
       </ul>
     </div>
 
     <div class="mt-4" style="justify-content: center">
       <h3 style="font-weight: bolder">이러한 검사를 지원합니다. </h3>
       <ul class="pl-4" style="font-style: italic; font-weight: bold">
-        <li>수면 자세 검사 - 잠자기 전 켜놓고 수면합니다.</li>
-        <li>일상 생활 검사 - 업무할 때, 백그라운드로 켜놓고 작업합니다.</li>
+        <li>일상 검사 - 평소 일할 때, 얼마나 피곤한지 검사합니다.</li>
+        <li>수면 검사 - 잠잘 때, 어떤 자세로 수면하는지 검사합니다.</li>
+        <li>자세 검사 - 평소 일할 때, 어떤 자세로 일하는지 검사합니다.</li>
       </ul>
     </div>
   </div>

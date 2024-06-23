@@ -19,11 +19,11 @@
         </thead>
 
         <tbody>
-            <tr v-for="(detectionNo, detectionNoIndex) in detectionNoList" @click="onClickDetectionNoTableRow(detectionNo.uid)">
-              <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.uid}}</td>
-              <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.TEST_TP}}</td>
-              <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.START_DTTM}}</td>
-              <td :style="{'background': detectionNo.uid == selectedDetectionNo ? '#98f6fa': ''}">{{detectionNo.END_DTTM}}</td>
+            <tr v-for="(detectionNo, detectionNoIndex) in detectionNoList" @click="onClickDetectionNoTableRow(detectionNo)">
+              <td :style="{'background': detectionNo.DETECTION_NO == selectedDetectionNo.DETECTION_NO ? '#98f6fa': ''}">{{detectionNo.DETECTION_NO}}</td>
+              <td :style="{'background': detectionNo.DETECTION_NO == selectedDetectionNo.DETECTION_NO ? '#98f6fa': ''}">{{detectionNo.TEST_TP}}</td>
+              <td :style="{'background': detectionNo.DETECTION_NO == selectedDetectionNo.DETECTION_NO ? '#98f6fa': ''}">{{detectionNo.START_DTTM}}</td>
+              <td :style="{'background': detectionNo.DETECTION_NO == selectedDetectionNo.DETECTION_NO ? '#98f6fa': ''}">{{detectionNo.END_DTTM}}</td>
             </tr>
         </tbody>
 
@@ -137,7 +137,8 @@ export default {
     const state = reactive({
       detectionNoList: [],
 
-      selectedDetectionNo:'',
+      selectedDetectionNo:{},
+
 
       detailInfo: {
         detectionNo: '',
@@ -148,8 +149,8 @@ export default {
     })
 
     watch(()=>state.selectedDetectionNo, ()=> {
-
-    })
+      getDetectionNoDetail();
+    },{deep:true})
 
     function onClickDetectionNoTableRow(detectionNo) {
       state.selectedDetectionNo = detectionNo;
@@ -165,8 +166,29 @@ export default {
         });
     }
 
+    async function getDetectionNoDetail() {
+      await axiosHttp.post("/api/objectDetectionReport/getDetectionNoDetail", JSON.stringify({"DETECTION_NO" : state.selectedDetectionNo.DETECTION_NO, "TEST_TP": state.selectedDetectionNo.TEST_TP}), {})
+        .then((res) => {
+          console.log(res.data);
+
+        }).catch((error) => {
+          console.log(error);
+        });
+    }
+
+    async function getReportData() {
+      await axiosHttp.post("/api/objectDetectionReport/getReportData", null, {})
+        .then((res) => {
+          console.log(res.data);
+
+        }).catch((error) => {
+          console.log(error);
+        });
+    }
+
     onMounted(()=> {
-      getDetectionNo()
+      getDetectionNo();
+      getReportData();
     })
 
 

@@ -43,6 +43,11 @@ const routes = [
         name: "ObjectDetectionReport",
         component: () =>  import("/src/app/object_detection/views/ObjectDetectionReport.vue"),
       },
+      {
+        path: "Intro",
+        name: "Intro",
+        component: () =>  import("/src/app/Intro.vue"),
+      },
     ]
   },
 ];

@@ -111,7 +111,7 @@
               </template>
 
               <template v-if="testType=='pose'">
-                <td>{{data.neck_and_waist}}</td>
+                <td>{{data.pose}}</td>
               </template>
 
               <td></td>

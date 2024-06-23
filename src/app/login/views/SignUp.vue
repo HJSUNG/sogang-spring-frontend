@@ -4,10 +4,10 @@
       <a class="navbar-brand" href="#">이용약관 동의</a>
       <label>약관에 동의합니다<input type="checkbox" v-model="isAgreeTerm"></label>
     </nav>
-    <textarea class="w-100" readonly>서강스프링 (Sogang Spring) 회원가입 약관
+    <textarea class="w-100" readonly>유비무환 (주) Sogang Spring 회원가입 약관
 
       제 1 조 (목적)
-이 약관은 서강스프링(이하 "서비스")의 이용 조건 및 절차, 이용자와 서비스 제공자의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
+이 약관은 유비무환(이하 "서비스")의 이용 조건 및 절차, 이용자와 서비스 제공자의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
 
       제 2 조 (회원가입)
 회원가입은 서비스 제공자가 제공하는 가입 양식에 따라 회원 정보를 기입한 후 약관에 동의함으로써 완료됩니다.

@@ -9,10 +9,16 @@
         </a>
 
         <ul class="nav me-auto mb-2 mb-lg-0">
-          <li><a class="nav-link px-2 text-secondary" style="cursor: pointer" @click="routerPush('/home')">Home</a></li>
-          <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/objectDetection_normal')">일상검사</a></li>
-          <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/objectDetection_sleeping')">수면검사</a></li>
-          <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/objectDetection_pose')">자세검사</a></li>
+          <li>
+            <a class="nav-link px-2 text-secondary" style="cursor: pointer" @click="routerPush('/home')">
+              <img :src="imageSrc_logo" alt="Home" style="width: 30px; height: 30px;">
+            </a>
+          </li>
+<!--          <li><a class="nav-link px-2 text-secondary" style="cursor: pointer" @click="routerPush('/home')">Home</a></li>-->
+          <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/Intro')">Intro</a></li>
+          <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/objectDetection_normal')">1. 컨디션검사</a></li>
+          <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/objectDetection_sleeping')">2. 수면검사</a></li>
+          <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/objectDetection_pose')">3. 자세검사</a></li>
           <li><a class="nav-link px-2 text-white" style="cursor: pointer" @click="routerPush('/ObjectDetectionReport')">검사이력</a></li>
           <!-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li> -->
           <!-- <li><a href="#" class="nav-link px-2 text-white">About</a></li> -->
@@ -37,7 +43,7 @@
 
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { computed } from "vue";
+import { computed, reactive, toRefs } from "vue";
 
 export default {
   name: "AppHeader",
@@ -48,6 +54,10 @@ export default {
     const USER_NM = computed(()=>store.getters['login/userInfo'].USER_NM);
     const accessToken = computed(()=>store.getters['login/userInfo'].accessToken);
     const isLogin = computed(() => accessToken.value !== "");
+
+    const state = reactive({
+      imageSrc_logo: require('@/assets/images/yoube1.png'),
+    })
     function routerPush(url) {
       router.push(url)
     }
@@ -65,6 +75,7 @@ export default {
     }
 
     return {
+      ...toRefs(state),
       USER_NM,accessToken,isLogin,
       routerPush,
       onClickLoginBtn,onClickSignUpBtn,onClickLogoutBtn,

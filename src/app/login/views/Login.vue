@@ -17,8 +17,8 @@
     </svg>
 
     <main class="form-signin w-100 m-auto">
-        <img class="mb-4" src="sogang_university.png" alt="" width="72" height="57">
-        <h1 class="h3 mb-3 fw-normal">Sogang Spring 로그인</h1>
+        <img class="mb-4" :src="image1Src" alt="" width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal">유비무환 로그인</h1>
 
         <div class="form-floating">
           <input type="text" class="form-control" id="floatingInput" placeholder="ID" v-model="USER_ID">
@@ -36,7 +36,7 @@
 <!--          </label>-->
 <!--        </div>-->
         <button class="mt-2 btn btn-primary w-100 py-2" type="submit" @click="login">로그인</button>
-        <p class="mt-5 mb-3 text-body-secondary">© 2024 Sogang Spring</p>
+        <p class="mt-5 mb-3 text-body-secondary">© 2024 유비무환</p>
 
     </main>
   </body>
@@ -58,6 +58,9 @@ export default {
     const state = reactive({
       USER_ID: '',
       USER_PW: '',
+
+      image1Src: require('@/assets/images/yoube1.png'),
+
     })
 
     async function login() {

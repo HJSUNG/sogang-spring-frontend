@@ -176,7 +176,7 @@ export default {
       console.log("Intro.vue > " + process.env.NODE_ENV.toString() + " mode - 해당 화면은 개발 환경에서만 실행됩니다.");
       toast.add({ severity: 'error', summary: '사용 불가', detail: '해당 화면은 AWS 이슈로 Local 환경에서만 사용합니다.', life: 3000 });
       router.push('/home');
-    
+    }
 
     onMounted(()=> {
       getWeatherInfo();

@@ -64,7 +64,7 @@
             </template>
 
             <template v-if="testType=='pose'">
-              <th>목/허리</th>
+              <th>목 검사</th>
             </template>
 
             <th scope="col"></th>

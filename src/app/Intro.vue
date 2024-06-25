@@ -179,7 +179,9 @@ export default {
     }
 
     onMounted(()=> {
-      getWeatherInfo();
+      if(process.env.NODE_ENV == 'development') {
+        getWeatherInfo();
+      }
     })
 
 

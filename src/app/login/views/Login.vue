@@ -77,6 +77,10 @@ export default {
             USER_ID: res.data.USER_ID,
             USER_NM: res.data.USER_NM,
             USER_TP: res.data.USER_TP,
+            USER_GENDER: res.data.USER_GENDER,
+            USER_BIRTH_DT: res.data.USER_BIRTH_DT,
+            USER_ADDR: res.data.USER_ADDR,
+            USER_EMAIL_ADDR: res.data.USER_EMAIL_ADDR,
             accessToken: res.data.accessToken
           }
           store.commit('login/login', payload);

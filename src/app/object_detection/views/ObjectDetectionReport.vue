@@ -1,125 +1,50 @@
 <template>
-  <div class="d-flex h-100 p-2">
-    <div class="h-100" style="border-right: 1px gray solid; overflow-y: auto">
-      <table class="table">
-        <colgroup>
-          <col style="width: 100px">
-          <col style="width: 100px">
-          <col style="width: 200px">
-          <col style="width: 200px">
-        </colgroup>
-
-        <thead>
-          <tr>
-            <th>검사번호</th>
-            <th>검사유형</th>
-            <th>검사시작일시</th>
-            <th>검사종료일시</th>
-          </tr>
-        </thead>
-
-        <tbody>
-            <tr v-for="(detectionNo, detectionNoIndex) in detectionNoList" @click="onClickDetectionNoTableRow(detectionNo)">
-              <td :style="{'background': detectionNo.DETECTION_NO == selectedDetectionNo.DETECTION_NO ? '#98f6fa': ''}">{{detectionNo.DETECTION_NO}}</td>
-              <td :style="{'background': detectionNo.DETECTION_NO == selectedDetectionNo.DETECTION_NO ? '#98f6fa': ''}">{{detectionNo.TEST_TP}}</td>
-              <td :style="{'background': detectionNo.DETECTION_NO == selectedDetectionNo.DETECTION_NO ? '#98f6fa': ''}">{{detectionNo.START_DTTM}}</td>
-              <td :style="{'background': detectionNo.DETECTION_NO == selectedDetectionNo.DETECTION_NO ? '#98f6fa': ''}">{{detectionNo.END_DTTM}}</td>
-            </tr>
-        </tbody>
-
-      </table>
+  <div class="d-flex flex-column h-100 sign-up-input">
+    <div class="card">
+      <Panel header="사용자 정보">
+        <p class="m-0">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </Panel>
     </div>
 
-    <div class="h-100" style="margin-left:5px; flex:1;border: 1px grey solid;border-radius: 10px; padding: 10px">
+    <div>
+      <Splitter style="height: 150px" class="mt-2 mb-2">
+        <SplitterPanel class="flex align-items-center justify-content-center"> Panel 1 </SplitterPanel>
+        <SplitterPanel class="flex align-items-center justify-content-center"> Panel 2 </SplitterPanel>
+        <SplitterPanel class="flex align-items-center justify-content-center"> Panel 3 </SplitterPanel>
+      </Splitter>
+    </div>
 
-      <h5 style="font-weight: bolder">{{detection_no ? '○ 검사번호 : ' + detection_no : "○ 검사번호"}}</h5>
-      <h5 style="font-weight: bolder">{{detection_no ? '○ 검사유형 : ' + detection_no : "○ 검사유형"}}</h5>
-      <h5 style="font-weight: bolder">{{detection_start_dttm ? '○ 검사 시작시간 : ' + detection_start_dttm : "○ 검사 시작시간"}}</h5>
-      <h5 style="font-weight: bolder">{{detection_end_dttm ? '○ 검사 종료시간 : ' + detection_end_dttm : "○ 검사 종료시간"}}</h5>
+    <div class="d-flex">
+      <input type="text" class="form-control" id="chatbotInput" placeholder="챗봇에 질문하기" v-model="chatbotInputText">
+      <button type="button" class="btn btn-primary" style="margin-left: 10px;width: 105px">{{'질문하기'}}</button>
+    </div>
+    
+    <div class="card mt-2" style="flex:1">
+      <ScrollPanel style="width: 100%; height: 100%">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+          voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
+        </p>
+        <p>
+          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+          officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
+        </p>
+        <p class="m-0">
+          Quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+          recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat
+        </p>
+      </ScrollPanel>
+    </div>
 
-      <div style="font-weight: bold">■ 일상생활</div>
-      <div>
-        <table class="table">
-          <colgroup>
-            <col style="width: 200px">
-            <col style="width: 200px">
-            <col style="width: 200px">
-          </colgroup>
-
-          <thead>
-            <tr>
-              <th>Class 0 - 눈 비비기</th>
-              <th>Class 1 - 정상</th>
-              <th>Class 2 - 하품</th>
-            </tr>
-          </thead>
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
-          <tbody>
-
-          </tbody>
-        </table>
-      </div>
-
-
-      <div style="font-weight: bold">■ 감정</div>
-      <div>
-        <table class="table">
-          <colgroup>
-            <col style="width: 200px">
-            <col style="width: 200px">
-            <col style="width: 200px">
-          </colgroup>
-
-          <thead>
-          <tr>
-            <th>Class 0 - 눈 비비기</th>
-            <th>Class 1 - 정상</th>
-            <th>Class 2 - 하품</th>
-          </tr>
-          </thead>
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
-          <tbody>
-
-          </tbody>
-        </table>
-      </div>
-
-
-      <div style="font-weight: bold">■ 수면자세</div>
-      <div>
-        <table class="table">
-          <colgroup>
-            <col style="width: 200px">
-            <col style="width: 200px">
-            <col style="width: 200px">
-          </colgroup>
-
-          <thead>
-          <tr>
-            <th>Class 0 - 눈 비비기</th>
-            <th>Class 1 - 정상</th>
-            <th>Class 2 - 하품</th>
-          </tr>
-          </thead>
-          <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
-          <tbody>
-
-          </tbody>
-        </table>
-      </div>
-
+    <div class="d-flex mt-2" style="justify-content:center">
+      <button type="button" class="btn btn-primary" style="margin-left: 10px;width: 150px">관련 추천받기</button>
     </div>
   </div>
 
@@ -129,52 +54,24 @@
 import { onMounted, reactive, toRefs, watch } from "vue";
 import axiosHttp from "@/utils/axiosHttp";
 
+import Panel from "primevue/panel";
+import Splitter from 'primevue/splitter';
+import SplitterPanel from 'primevue/splitterpanel';
+import ScrollPanel from 'primevue/scrollpanel';
+
 export default {
   name: "ObjectDetectionReport",
-  components: {},
+  components: {
+    Panel,
+    Splitter,
+    SplitterPanel,
+    ScrollPanel,
+  },
   props: {},
   setup() {
     const state = reactive({
-      detectionNoList: [],
-
-      selectedDetectionNo:{},
-
-
-      detailInfo: {
-        detectionNo: '',
-        testType: '',
-        start_dttm: '',
-        end_dttm:'',
-      },
+      chatbotInputText: "",
     })
-
-    watch(()=>state.selectedDetectionNo, ()=> {
-      getDetectionNoDetail();
-    },{deep:true})
-
-    function onClickDetectionNoTableRow(detectionNo) {
-      state.selectedDetectionNo = detectionNo;
-    }
-
-    async function getDetectionNo() {
-      await axiosHttp.post("/api/objectDetectionReport/getDetectionNoList", null, {})
-        .then((res) => {
-          console.log(res.data);
-          state.detectionNoList = res.data.detection_no_list;
-        }).catch((error) => {
-          console.log(error);
-        });
-    }
-
-    async function getDetectionNoDetail() {
-      await axiosHttp.post("/api/objectDetectionReport/getDetectionNoDetail", JSON.stringify({"DETECTION_NO" : state.selectedDetectionNo.DETECTION_NO, "TEST_TP": state.selectedDetectionNo.TEST_TP}), {})
-        .then((res) => {
-          console.log(res.data);
-
-        }).catch((error) => {
-          console.log(error);
-        });
-    }
 
     async function getReportData() {
       await axiosHttp.post("/api/objectDetectionReport/getReportData", null, {})
@@ -187,19 +84,23 @@ export default {
     }
 
     onMounted(()=> {
-      getDetectionNo();
-      getReportData();
+
     })
 
 
     return {
       ...toRefs(state),
-      onClickDetectionNoTableRow
     }
   }
 };
 </script>
 
 <style scoped>
-
+.sign-up-input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 10px;
+}
 </style>

@@ -211,7 +211,7 @@ export default {
           if(state.testData.normalTest.detectionNo != 0) {
             if (state.testData.normalTest.yawn >= state.testData.normalTest.eyeRubbing) {
               state.chatbotInputText = '오늘 하품이 많이 나오는데, 하품이 많이 나오는 질병이 있나?'
-              state.recommendation = '내과';
+              state.recommendation = '이비인후과';
             } else {
               state.chatbotInputText = '오늘 눈을 계속 비비게 되는데, 눈 비비면 걸리는 질병이 있나?';
               state.recommendation = '안과';
@@ -297,7 +297,7 @@ export default {
         state.testData.poseTest.startDttm = data.pose_test[0].START_DTTM;
         state.testData.poseTest.endDttm = data.pose_test[0].END_DTTM;
 
-        let pose = data.pose_test_detail.filter((row)=> {return true});
+        let pose = data.pose_test_detail.filter((row)=> {return row.DETECTION_TP_CLASS != 'normal'});
         pose.sort((a,b)=> {
           if(a.COUNTING > b.COUNTING) {return -1}
           if(a.COUNTING < b.COUNTING) {return 1}
